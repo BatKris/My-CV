@@ -1,0 +1,23 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "description": "My CV",
+  "license": "ISC",
+  "author": "Kris",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js",
+    "client": "live-server --port=5500",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "axios": "^1.15.0",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "live-server": "^1.2.2",
+    "puppeteer": "^24.39.0"
+  }
+}

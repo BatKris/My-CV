@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+
+        async function downloadPdf()
+        {
+            const btn = document.querySelector('.download');
+            btn.innerText = "Downloading...";
+
+            try 
+            {
+                const response = await fetch('http://localhost:3000/generate-pdf');
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "cv.pdf";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } 
+            catch (err) 
+            {
+                console.error("Error:", err);
+            } 
+            finally 
+            {
+                btn.innerText = "Download PDF";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <main>
+        <div class = "first-half item">
+            <div class = "picbox">
+                <img src="me.jpg" alt="">
+                <span>Christian Ivanov</span>
+            </div>
+
+            <div class = "contact">
+                <p>CONTACT</p>
+                <ul>
+                    <li>+359 87 961 6446</li>
+                    <li>krischan1408k@gmail.com</li>
+                    <li>Sofia, 1700</li>
+                    <li><a href="https://www.linkedin.com/in/kristian-ivanov-420236368/">Kristian Ivanov</a></li>
+                    <li><a href="https://github.com/BatKris">BatKris</a></li>
+                </ul>
+            </div>
+
+            <div class="skills">
+                <p>SKILLS</p>
+                <ul>
+                    <li><span>Web Design (HTML, CSS, JavaScript)</span></li>
+                    <li><span>C# and .NET</span></li>
+                    <li><span>Image Editors (GIMP)</span></li>
+                    <li><span>Microsoft Office</span></li>
+                    <li><span>Team Collaboration</span></li>
+                    <li><span>Problem Solving</span></li>
+                    <li><span>SQL and Databases</span></li>
+                </ul>
+            </div>
+
+            <div class = "languages">
+                <p>LANGUAGES</p>
+                <ul>
+                    <li><span>English: </span> 
+                        <div class = "progress-container">
+                            <div class = "progress-bar">
+                                <span>85%</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li><span>Bulgarian: </span>
+                        <div class = "progress-container">
+                            <div class = "progress-bar" style="width: 100%;">
+                                <span>100%</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class = "hobbies">
+                <p>HOBBIES</p>
+                <ul>
+                    <li><span>Studying</span></li>
+                    <li><span>Sports and Exercising</span></li>
+                    <li><span>Automotive technologies</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class = "second-half item">
+            <div class = "profile">
+                <p>PROFILE</p>
+                <span>Enthusiastic and knowledge hungry undergraduate student seeking a job as either a programmer, especially in the automotive industry. Quick learner, team player, and eager to acquire expertise in varying fields of work. Well versed in Web Design, GIMP, and currently advancing my knowledge in .NET and SQL, ECUs, CAN Bus, and Volumetric Efficiency Maps. Done some minor mechanical and electrical work on my car too (Changed fluids, brakes, fixed a non-working electrical door lock, etc.).</span>
+            </div>
+
+            <div class = "work">
+                <p>WORK EXPERIENCE</p>
+
+                <div class="item">
+                    <strong>University Project - Embedded Systems Simulation</strong>
+                    <span>October, 2025 - Present</span>
+                    <ol>
+                        <li>Worked with microcontroller logic</li>
+                        <li>Developed a prototype software module</li>
+                        <li>Testing and documentation</li>
+                    </ol>
+                </div>
+
+                <div class = "item">
+                    <strong>University Project - Graph Data Structure Simulation</strong>
+                    <span>November, 2025 - October, 2025</span>
+                    <ol>
+                        <li>Created a graph, and the relations of the elements in it, in C++</li>
+                        <li>Utilized a plotting library to visualize the graph</li>
+                        <li>Testing for errors and documenting results</li>
+                    </ol>
+                </div>
+
+            </div>
+
+            <div class = "education">
+                <p>EDUCATION</p>
+                
+                <div class="item">
+                    <strong>Bachelor in Communications and Computer Technologies</strong>
+                    <span>September, 2024 - (Education is still ongoing)</span>
+                    <span>Technical University, Sofia</span>
+                </div>
+
+                <div class="item">
+                    <strong>Secondary Education in Systems Programming</strong>
+                    <span>September, 2019 - May, 2024</span>
+                    <span>Vocational High School for Woodworking and Construction "Tsar Ivan Asen II"</span>
+                </div>
+
+            </div>
+            <button class="download" onclick="downloadPdf()">Download PDF</button>
+        </div> 
+    </main>
+
+    
+</body>
+</html>
